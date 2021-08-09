@@ -31,7 +31,7 @@ defmodule Racetrack.CarsTest do
     end
 
     test "when nil is passed in , returns  `track not selected`" do
-      assert "track not selected" == Racetrack.Cars.get_track(nil)
+      assert "track_not_selected" == Racetrack.Cars.get_track(nil)
     end
   end
 end
