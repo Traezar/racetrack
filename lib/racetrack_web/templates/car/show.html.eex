@@ -1,8 +1,0 @@
-<h1>Show Car</h1>
-
-<ul>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.car_path(@conn, :edit, @car) %></span>
-<span><%= link "Back", to: Routes.car_path(@conn, :index) %></span>
