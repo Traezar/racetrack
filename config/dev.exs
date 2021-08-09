@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :racetrack, Racetrack.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "racetrack_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
