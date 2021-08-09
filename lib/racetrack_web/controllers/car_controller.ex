@@ -3,7 +3,9 @@ defmodule RacetrackWeb.CarController do
   alias Racetrack.Cars
 
   def show(conn, params) do
-    {car, track_speed} = Cars.get_car_with_track_speed(params["id"], params["track"])
+    slug = String.downcase(params["id"])
+    track = params["track"]
+    {car, track_speed} = Cars.get_car_with_track_speed(slug, track)
 
     if is_nil(car),
       do: render_404(conn),
