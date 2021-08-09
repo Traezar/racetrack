@@ -21,7 +21,7 @@ defmodule Racetrack.Cars do
 
   def get_car(slug) when is_binary(slug), do: Repo.get_by(Car, slug: slug)
   def get_track(nil), do: "track_not_selected"
-  def get_track(name), do: Repo.get_by(Track, name: name) |> IO.inspect()
+  def get_track(name), do: Repo.get_by(Track, name: name)
 
   def apply_slowing_factors(_speed, "track_not_selected"), do: "no track selected"
   def apply_slowing_factors(_speed, nil), do: "track not found"

@@ -37,7 +37,7 @@ defmodule RacetrackWeb.CarControllerTest do
       assert car["max_speed"] == "100km/h"
 
       assert car["max_speed_on_track"] ==
-               speed
+               100
                |> Cars.apply_slowing_factors(%{surface: :snow})
                |> RacetrackWeb.CarView.speed_in_km()
     end
