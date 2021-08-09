@@ -13,16 +13,13 @@ defmodule RacetrackWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", RacetrackWeb do
-    pipe_through :browser
+  scope "/api", RacetrackWeb do
+    pipe_through :api
 
-    get "/", PageController, :index
+    scope "/v1" do
+      get "/cars/:id", CarController, :show
+    end
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", RacetrackWeb do
-  #   pipe_through :api
-  # end
 
   # Enables LiveDashboard only for development
   #

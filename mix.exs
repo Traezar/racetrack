@@ -25,7 +25,7 @@ defmodule Racetrack.MixProject do
   end
 
   # Specifies which paths to compile per environment.
-  defp elixirc_paths(:test), do: ["lib", "test/support" ]
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_), do: ["lib"]
 
   # Specifies your project dependencies.
@@ -45,7 +45,8 @@ defmodule Racetrack.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:ex_machina, "~> 2.7.0",only: :test}
+      {:ex_machina, "~> 2.7.0", only: :test},
+      {:json, "~> 1.4", only: :test}
     ]
   end
 

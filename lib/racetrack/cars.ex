@@ -30,7 +30,6 @@ defmodule Racetrack.Cars do
 
   """
   def get_car(slug) when is_binary(slug), do: Repo.get_by(Car, slug: slug)
-  def get_car(id) when is_integer(id), do: Repo.get(Car, id)
 
   @doc """
   Creates a car.
