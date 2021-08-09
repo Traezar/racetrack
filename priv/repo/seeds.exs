@@ -2,10 +2,12 @@
 #
 #     mix run priv/repo/seeds.exs
 #
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     Racetrack.Repo.insert!(%Racetrack.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+alias Racetrack.Cars.{Car, Track}
+alias Racetrack.Repo
+
+Repo.insert!(%Car{slug: "subaru_impreza", max_speed: 200})
+Repo.insert!(%Car{slug: "honda_jazz", max_speed: 100})
+Repo.insert!(%Car{slug: "mclaren_p90", max_speed: 1000})
+Repo.insert!(%Track{name: "daytona", surface: :asphalt})
+Repo.insert!(%Track{name: "thunderhill", surface: :gravel})
+Repo.insert!(%Track{name: "snowland", surface: :snow})
