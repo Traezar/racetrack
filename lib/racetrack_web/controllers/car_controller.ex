@@ -15,7 +15,7 @@ defmodule RacetrackWeb.CarController do
   defp render_404(conn) do
     conn
     |> put_status(:not_found)
-    |> put_view(Racetrack.ErrorView)
-    |> render(:"404")
+    |> put_view(RacetrackWeb.ErrorView)
+    |> render(:not_found)
   end
 end

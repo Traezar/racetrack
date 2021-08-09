@@ -3,8 +3,8 @@ defmodule RacetrackWeb.ErrorView do
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.
-  def render("400", _assigns) do
-    "Not Found"
+  def render("not_found.json", _assigns) do
+    %{error: %{message: "Not Found"}}
   end
 
   # By default, Phoenix returns the status message from
