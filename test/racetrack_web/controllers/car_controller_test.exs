@@ -1,6 +1,7 @@
 defmodule RacetrackWeb.CarControllerTest do
   use RacetrackWeb.ConnCase
   import Racetrack.CarFactory
+  alias Racetrack.Cars
 
   describe "show" do
     test "show a car for the slug provided, without track" do
@@ -34,10 +35,14 @@ defmodule RacetrackWeb.CarControllerTest do
       assert car["car_slug"] == "awesome_car"
       assert car["id"] == 1
       assert car["max_speed"] == "100km/h"
-      assert car["max_speed_on_track"] == "35.0km/h"
+
+      assert car["max_speed_on_track"] ==
+               speed
+               |> Cars.apply_slowing_factors(%{surface: :snow})
+               |> RacetrackWeb.CarView.speed_in_km()
     end
 
-    test "show a car for the slug provided, with unknow track" do
+    test "show a car for the slug provided, with unknown track" do
       insert(:car, %{id: 1, slug: "awesome_car", max_speed: 100})
 
       conn =

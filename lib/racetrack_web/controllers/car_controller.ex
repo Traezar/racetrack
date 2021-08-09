@@ -3,12 +3,11 @@ defmodule RacetrackWeb.CarController do
   alias Racetrack.Cars
 
   def show(conn, params) do
-    car = Cars.get_car(params["id"])
-    track = Cars.get_track(params["track"])
+    {car, track_speed} = Cars.get_car_with_track_speed(params["id"], params["track"])
 
     if is_nil(car),
       do: render_404(conn),
-      else: render(conn, "car_summary.json", car: car, track: track)
+      else: render(conn, "car_summary.json", car: car, track_speed: track_speed)
   end
 
   defp render_404(conn) do

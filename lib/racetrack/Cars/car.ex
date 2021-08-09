@@ -12,6 +12,6 @@ defmodule Racetrack.Cars.Car do
   def changeset(car, attrs) do
     car
     |> cast(attrs, [:slug, :max_speed])
-    |> validate_required([:slug,:max_speed])
+    |> validate_required([:slug, :max_speed])
   end
 end
