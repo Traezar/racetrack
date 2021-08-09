@@ -1,6 +1,6 @@
 defmodule Racetrack.Cars do
-
   alias Racetrack.Cars.Car
+  alias Racetrack.Repo
 
   @doc """
   Returns the list of cars.
@@ -29,7 +29,8 @@ defmodule Racetrack.Cars do
       ** (Ecto.NoResultsError)
 
   """
-  def get_car!(id), do: Repo.get!(Car, id)
+  def get_car(slug) when is_binary(slug), do: Repo.get_by(Car, slug: slug)
+  def get_car(id) when is_integer(id), do: Repo.get(Car, id)
 
   @doc """
   Creates a car.
@@ -43,56 +44,4 @@ defmodule Racetrack.Cars do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_car(attrs \\ %{}) do
-    %Car{}
-    |> Car.changeset(attrs)
-    |> Repo.insert()
-  end
-
-  @doc """
-  Updates a car.
-
-  ## Examples
-
-      iex> update_car(car, %{field: new_value})
-      {:ok, %Car{}}
-
-      iex> update_car(car, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_car(%Car{} = car, attrs) do
-    car
-    |> Car.changeset(attrs)
-    |> Repo.update()
-  end
-
-  @doc """
-  Deletes a car.
-
-  ## Examples
-
-      iex> delete_car(car)
-      {:ok, %Car{}}
-
-      iex> delete_car(car)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_car(%Car{} = car) do
-    Repo.delete(car)
-  end
-
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking car changes.
-
-  ## Examples
-
-      iex> change_car(car)
-      %Ecto.Changeset{data: %Car{}}
-
-  """
-  def change_car(%Car{} = car, attrs \\ %{}) do
-    Car.changeset(car, attrs)
-  end
 end
